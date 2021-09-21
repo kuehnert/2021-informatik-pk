@@ -6,7 +6,7 @@ function ActionButton() {
 
     return (
         <button
-            class="ui orange basic button"
+            className="ui orange basic button"
             onClick={handleClick}>
             Bumm!
         </button>)
