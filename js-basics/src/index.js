@@ -44,14 +44,24 @@ console.log(rfe);
 // const rc = fc("Hallo ");
 // console.log(rc);
 
-// const rfa = fd(fa);
+// const rfa = fd(fa); // callbacks
 // console.log(rfa);
 // const rfb = fd(fb)
 // console.log(rfb);
 // const rfz = fd(fz)
 // console.log(rfz);
 
-console.log("Ende");
+// console.log("Ende");
 
-const l = console.log;
-l("Hallo")
+// const l = console.log;
+// l("Hallo")
+
+function ende() {
+    console.log('Ende');
+}
+
+console.log('Start');
+setTimeout(() => {
+    console.log('Ende');
+}, 2000);
+

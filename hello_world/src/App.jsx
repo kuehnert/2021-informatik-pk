@@ -1,23 +1,55 @@
 // https://github.com/kuehnert/2021-informatik-pk
 
 import ActionButton from './components/ActionButton';
-import Rechnen from './components/Rechnen'
+import Rechnen from './components/Rechnen';
 import './App.css';
 import Doppeln from './components/Doppeln';
 import Clonen from './components/Clonen';
+import { BrowserRouter, Link, Route } from 'react-router-dom';
 
 function App() {
   // Heavy lifting
 
   return (
-    <div className="ui container">
-      <div className="ui raised segment"><Clonen /></div>
-      <div className="ui raised segment"><Doppeln /></div>
-      <div className="ui raised segment"><Rechnen /></div>
-      <div className="ui raised segment">Hallo, Welt!</div>
-      <div className="ui segment">{2 + 2}</div>
-      <div className="ui segment"><ActionButton /></div>
-    </div>
+    <BrowserRouter>
+      <div className='ui container'>
+        <div className='ui menu'>
+          <div className="header item">Toolbar</div>
+          <Link to='/seite1' className="item">Seite 1</Link>
+          <Link to='/seite2' className="item">Seite 2</Link>
+          <Link to='/seite3' className="item">Seite 3</Link>
+          <Link to='/seite4' className="item">Seite 4</Link>
+        </div>
+
+        <div className='ui segment'>
+          <Route path='/seite1'>
+            <h1>Seite 1</h1>
+            <Clonen />
+          </Route>
+
+          <Route path='/seite2'>
+            <h1>Seite 2</h1>
+            <Doppeln />
+          </Route>
+
+          <Route path='/seite3'>
+            <h1>Seite 3</h1>
+            <Rechnen />
+          </Route>
+
+          <Route path='/seite4'>
+            <h1>Seite 4</h1>
+            <div className='segment'>
+              <div className=''>Hallo, Welt!</div>
+              <div className=''>{2 + 2}</div>
+              <div className=''>
+                <ActionButton />
+              </div>
+            </div>
+          </Route>
+        </div>
+      </div>
+    </BrowserRouter>
   );
 }
 
