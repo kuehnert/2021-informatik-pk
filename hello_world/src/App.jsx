@@ -6,6 +6,7 @@ import './App.css';
 import Doppeln from './components/Doppeln';
 import Clonen from './components/Clonen';
 import { BrowserRouter, Link, Route } from 'react-router-dom';
+import Temperature from './components/Temperature';
 
 function App() {
   // Heavy lifting
@@ -15,6 +16,7 @@ function App() {
       <div className='ui container'>
         <div className='ui menu'>
           <div className="header item">Toolbar</div>
+          <Link to='/temp' className="item">Temp</Link>
           <Link to='/seite1' className="item">Seite 1</Link>
           <Link to='/seite2' className="item">Seite 2</Link>
           <Link to='/seite3' className="item">Seite 3</Link>
@@ -22,6 +24,11 @@ function App() {
         </div>
 
         <div className='ui segment'>
+          <Route path='/temp'>
+            <h1>Temprature</h1>
+            <Temperature />
+          </Route>
+
           <Route path='/seite1'>
             <h1>Seite 1</h1>
             <Clonen />
