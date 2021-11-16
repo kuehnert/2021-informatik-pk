@@ -1,9 +1,11 @@
 import {
+  Action,
   combineReducers,
-  configureStore
+  configureStore,
+  ThunkAction,
 } from '@reduxjs/toolkit';
-import todoReducer from './todoSlice';
 
+import todoReducer from './todoSlice';
 
 export const rootReducer = combineReducers({
   todos: todoReducer,
@@ -14,5 +16,8 @@ const store = configureStore({
   reducer: rootReducer,
 });
 
+export type RootState = ReturnType;
+export type AppThunk = ThunkAction;
+export type AppDispatch = typeof store.dispatch;
 
 export default store;

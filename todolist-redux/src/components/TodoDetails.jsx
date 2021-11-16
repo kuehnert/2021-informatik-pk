@@ -1,27 +1,35 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { updateTitle } from '../store/todoSlice';
+import './TodoDetails.scss'
 
 function ItemDetails(props) {
-  const item = props.item;
-  const [title, setTitle] = useState(item.title);
+  const { todo } = props;
+  const [title, setTitle] = useState(todo.title);
+  const dispatch = useDispatch();
 
-  const handleChange = (event) => {
+  if (todo == null) {
+    return <div>What the…?</div>;
+  }
+
+  const handleChange = event => {
     setTitle(event.target.value);
-  }
+  };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = event => {
     event.preventDefault();
-    props.handleEdit(item.id, title);
-  }
+    dispatch(updateTitle({ id: todo.id, title }));
+  };
 
   return (
-    <div className='ItemDetails'>
-      <h2>
-        Item Details {item.id} {item.title}
-      </h2>
+    <div className='todoDetails'>
+      <p>
+        To-Do „{todo.title}“ (ID {todo.id}) bearbeiten
+      </p>
 
       <form onSubmit={handleSubmit}>
         <input id='title' value={title} onChange={handleChange} />
-        <button type="submit">Speichern</button>
+        <button type='submit'>Speichern</button>
       </form>
     </div>
   );
