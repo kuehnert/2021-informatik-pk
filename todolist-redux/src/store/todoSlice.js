@@ -19,7 +19,7 @@ const todoSlice = createSlice({
       state.todos.push({ done: false, id: state.nextId, title: 'Unbenannt' });
       state.nextId += 1;
     },
-    removeTodo(state, action) {
+    removeTodo(state, action) { // removeTodo(5)
       const id = action.payload;
       const index = state.todos.findIndex(i => i.id === id);
       state.todos.splice(index, 1);

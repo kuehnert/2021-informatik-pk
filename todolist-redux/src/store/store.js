@@ -4,7 +4,6 @@ import {
 } from '@reduxjs/toolkit';
 import todoReducer from './todoSlice';
 
-
 export const rootReducer = combineReducers({
   todos: todoReducer,
 });
