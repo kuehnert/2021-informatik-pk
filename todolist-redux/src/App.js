@@ -1,14 +1,16 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import EditItem from './components/EditItem';
-import TodoList from './components/TodoList';
 import { Provider } from 'react-redux';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import EditItem from './components/EditItem';
+import Loader from './components/Loader';
+import TodoList from './components/TodoList';
 import store from './store/store';
 
 function App() {
   return (
     <div className='App'>
       <Provider store={store}>
+        <Loader />
         <BrowserRouter>
           <Routes>
             <Route path='/' element={<TodoList />} />
